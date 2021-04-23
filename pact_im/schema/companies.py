@@ -17,11 +17,15 @@ class CompaniesList(BaseModel):
     next_page: Optional[str]
 
 
-class CompaniesListResponse(PactResponse):
-    data: CompaniesList
-
-
 class CompanyListRequest(BaseModel):
     from_: Optional[str] = Field(alias='from', max_length=255)
     per: Optional[int] = Field(50, ge=1, le=100)
     sort_direction: Optional[SortDirection] = Field(SortDirection.ASC)
+
+
+class CompanyUpdate(BaseModel):
+    name: Optional[str] = Field(max_length=255)
+    phone: Optional[str]
+    description: Optional[str]
+    webhook_url: Optional[AnyHttpUrl]
+    hidden: Optional[bool]

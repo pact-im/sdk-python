@@ -3,11 +3,20 @@ from enum import Enum
 from pydantic import BaseModel
 
 
+class ResponseStatus(str, Enum):
+    OK = 'ok'
+    UPDATED = 'updated'
+
+
 class PactResponse(BaseModel):
-    status: str
+    status: ResponseStatus
+    data: dict
 
     def is_ok(self) -> bool:
-        return self.status == 'ok'
+        return self.status == ResponseStatus.OK
+
+    def is_updated(self) -> bool:
+        return self.status == ResponseStatus.UPDATED
 
 
 class SortDirection(str, Enum):
