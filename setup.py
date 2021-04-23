@@ -11,6 +11,7 @@ setup(
     author='Badrazhan Mikhail',
     packages=find_packages(),
     requires=[
-        'requests'
+        'requests',
+        'pydantic',
     ],
 )

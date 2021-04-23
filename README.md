@@ -1,4 +1,3 @@
 
 # Pact IM Python SDK
-
-### Python implementation for https://pact.im/
+A Python package for Pact.im API
