@@ -5,6 +5,7 @@ import requests
 
 
 class PactClientBase(ABC):
+    DEFAULT_API_BASE = 'https://api.pact.im/p1/'
 
     def __init__(self, api_token: str):
         if not api_token or api_token == '':
@@ -19,6 +20,7 @@ class PactClientBase(ABC):
         :param headers:
         :param params:
         :param body:
+        :raise exceptions.ApiCallException: Api call error
         :return:
         """
         headers = headers or dict()
@@ -27,4 +29,5 @@ class PactClientBase(ABC):
         response = requests.request(method, uri, headers=headers, params=params, json=body)
         if 200 <= response.status_code < 300:
             return response
-        raise exceptions.ApiCallException('Api returned HTTP non-OK status: %s' % response.status_code)
+
+        raise exceptions.http_error_handler(response.status_code)

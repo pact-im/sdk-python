@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class ResponseStatus(str, Enum):
     OK = 'ok'
     UPDATED = 'updated'
+    CREATED = 'created'
 
 
 class PactResponse(BaseModel):
@@ -29,3 +30,19 @@ class Method(str, Enum):
     POST = 'post'
     PUT = 'put'
     DELETE = 'delete'
+
+    def __str__(self) -> str:
+        return self.value
+
+
+class Provider(str, Enum):
+    WhatsApp = 'whatsapp'
+    WhatsAppBusiness = 'whatsapp_business'
+    Instagram = 'instagram'
+    Telegram = 'telegram'
+    Viber = 'viber'
+    VK = 'vk'
+    Facebook = 'facebook'
+
+    def __str__(self) -> str:
+        return self.value

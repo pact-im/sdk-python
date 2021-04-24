@@ -1,7 +1,13 @@
 from typing import Optional, List
 
-from pydantic import BaseModel, AnyHttpUrl, Field
+from pydantic import BaseModel, AnyHttpUrl, Field, root_validator
 from .base import PactResponse, SortDirection
+
+
+def is_not_none(v) -> bool:
+    if v is None:
+        return False
+    return True
 
 
 class Company(BaseModel):
@@ -29,3 +35,16 @@ class CompanyUpdate(BaseModel):
     description: Optional[str]
     webhook_url: Optional[AnyHttpUrl]
     hidden: Optional[bool]
+
+    @root_validator
+    def non_none_update(cls, values):
+        if not any([is_not_none(v) for v in values.values()]):
+            raise ValueError('at least one parameter must be passed')
+        return values
+
+
+class CreateCompany(BaseModel):
+    name: str = Field(..., max_length=255)
+    phone: Optional[str]
+    description: Optional[str]
+    webhook_url: Optional[AnyHttpUrl]
