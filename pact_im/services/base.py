@@ -1,13 +1,23 @@
 from abc import ABC
+from typing import Union, Optional
 
 from pydantic import BaseModel
 
 from pact_im import exceptions
 from pact_im.base import PactClientBase
+from pact_im.schema.base import PactResponse
+from pact_im.utils import camel_to_snake
 
 
 class Service(ABC):
     ENDPOINT = None
+
+    @classmethod
+    def class_name(cls):
+        name = cls.__name__[:-7]
+        if not len(name):
+            return cls.__name__.lower()
+        return camel_to_snake(name)
 
     def __init__(self, client: PactClientBase):
         self.__client = client
@@ -17,11 +27,23 @@ class Service(ABC):
             raise exceptions.InvalidArgumentException('Endpoint cannot not be empty')
         return self.ENDPOINT.strip('/')
 
-    def request(self, method: str, method_endpoint: str, params: dict = None, body=None, headers: dict = None) -> bytes:
+    def _endpoint(self, method_endpoint=None, *args) -> str:
+        base_args = [
+            self.__client.DEFAULT_API_BASE.rstrip("/"),
+            self.get_endpoint(),
+            str(method_endpoint or '').lstrip("/")
+        ]
+        endpoint = '/'.join(base_args)
+        if not len(args):
+            return endpoint
+        return endpoint % args
+
+    def request(self, method: str, endpoint: str, params: Optional[Union[dict, BaseModel]] = None,
+                body: Optional[Union[dict, BaseModel]] = None, headers: dict = None) -> PactResponse:
         """
 
         :param method:
-        :param method_endpoint:
+        :param endpoint:
         :param params:
         :param body:
         :param headers:
@@ -30,11 +52,14 @@ class Service(ABC):
         """
         if isinstance(body, BaseModel):
             body = body.json(exclude_none=True, exclude_defaults=True)
+        if isinstance(params, BaseModel):
+            params = params.dict(exclude_none=True, exclude_defaults=True)
+
         response = self.__client.request(
             method,
-            f'{self.__client.DEFAULT_API_BASE.rstrip("/")}/{self.get_endpoint()}/{method_endpoint}',
+            endpoint,
             headers=headers,
             params=params,
             body=body
         )
-        return response.raw
+        return PactResponse.parse_raw(response.raw)

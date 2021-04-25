@@ -1,0 +1,15 @@
+site_name: PactIM Python SDK
+site_url: https://pact-im.github.io/sdk-python
+
+repo_name: pact-im/sdk-python
+repo_url: https://github.com/pact-im/sdk-python
+edit_uri: ''
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Using:
+      - Companies: using/companies.md
+theme:
+  name: readthedocs
+  highlightjs: true
+  include_homepage_in_sidebar: false

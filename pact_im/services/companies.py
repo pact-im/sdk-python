@@ -24,12 +24,11 @@ class CompaniesService(Service):
 
         response = self.request(
             method=Method.GET,
-            method_endpoint='',
-            params=query.dict(exclude_defaults=True, exclude_none=True)
+            endpoint=self._endpoint(),
+            params=query
         )
-        response_model = PactResponse.parse_raw(response)
 
-        return CompaniesList.parse_obj(response_model.data)
+        return response.to_class(CompaniesList)
 
     def update_company(self, external_id: int, name: Optional[str] = None, phone: Optional[str] = None,
                        description: Optional[str] = None,
@@ -54,12 +53,11 @@ class CompaniesService(Service):
 
         response = self.request(
             method=Method.PUT,
-            method_endpoint=str(external_id),
+            endpoint=self._endpoint('%s', str(external_id)),
             body=query
         )
-        response_model = PactResponse.parse_raw(response)
 
-        return response_model.data.get('external_id')
+        return response.data.get('external_id')
 
     def create_company(self, name: str, phone: Optional[str] = None, description: Optional[str] = None,
                        webhook_url: Optional[str] = None) -> Optional[int]:
@@ -76,9 +74,8 @@ class CompaniesService(Service):
 
         response = self.request(
             method=Method.POST,
-            method_endpoint='',
+            endpoint=self._endpoint(),
             body=query
         )
-        response_model = PactResponse.parse_raw(response)
 
-        return response_model.data.get('external_id')
+        return response.data.get('external_id')
