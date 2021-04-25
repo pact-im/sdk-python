@@ -6,7 +6,7 @@ from pact_im.schema.messages import MessageListRequest, MessageList, MessageCrea
 from pact_im.services.base import Service
 
 
-class MessageService(Service):
+class MessagesService(Service):
     ENDPOINT = 'companies/%s/conversations/%s/messages'
 
     def get_messages(self, company_id: int, conversation_id: int, from_: Optional[int] = None,
@@ -23,7 +23,7 @@ class MessageService(Service):
         :param sort:
         :return:
         """
-        query = MessageListRequest.parse_obj(**{'from_': from_, 'per': per, 'sort': sort})
+        query = MessageListRequest.parse_obj({'from_': from_, 'per': per, 'sort': sort})
 
         response = self.request(
             method=Method.GET,

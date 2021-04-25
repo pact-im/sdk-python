@@ -17,8 +17,8 @@ class PactClient(PactClientBase):
         return services.ConversationsService(self)
 
     @property
-    def messages(self) -> services.MessageService:
-        return services.MessageService(self)
+    def messages(self) -> services.MessagesService:
+        return services.MessagesService(self)
 
     @property
     def jobs(self) -> services.JobsService:

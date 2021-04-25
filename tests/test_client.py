@@ -40,7 +40,7 @@ class PactClientTest(unittest.TestCase):
 
     def test_service_messages(self):
         service = self.client.messages
-        self.assertIsInstance(service, s.MessageService)
+        self.assertIsInstance(service, s.MessagesService)
         self.assertEqual(service.get_endpoint(), 'companies/%s/conversations/%s/messages')
 
     def test_service_jobs(self):

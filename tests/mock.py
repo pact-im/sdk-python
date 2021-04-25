@@ -222,12 +222,43 @@ def mocked_service_messages_service(_, method, url, **kwargs):
 def mocked_messages_service(_, method, url, **kwargs):
     endpoint = 'https://api.pact.im/p1/companies/%s/conversations/%s/messages/'
 
+    if method == Method.GET and url == endpoint % (54, 1):
+        return MockResponse({
+            "status": "ok",
+            "data": {
+                "messages": [
+                    {
+                        "external_id": 47098,
+                        "channel_id": 381,
+                        "channel_type": "whatsapp",
+                        "message": "Hello",
+                        "income": False,
+                        "created_at": "2017-09-17T12:44:28.000Z",
+                        "created_at_timestamp": 1603119600,
+                        "attachments": [
+
+                        ]
+                    }
+                ],
+                "next_page": "fslkfg2lkdfmlwkmlmw4of94wg34lfkm34lg"
+            }
+        }, 200)
+
     if method == Method.POST and url == endpoint % (54, 1):
         return MockResponse({
             "status": "ok",
             "data": {
-                "id": 42,
-                "company_id": 154
+                "id": 18,
+                "company_id": 154,
+                "channel": {
+                    "id": 399,
+                    "type": "whatsapp"
+                },
+                "conversation_id": 8741,
+                "state": "trying_deliver",
+                "message_id": None,
+                "details": None,
+                "created_at": 1510396057
             }
         }, 200)
 
