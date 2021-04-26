@@ -8,7 +8,7 @@ from pact_im.schema.base import PhoneNumber, PactResponse
 
 from pact_im.schema.channels import ChannelListRequest, ChannelList, BaseChannelCreate, ChannelCreate, \
     WhatsAppChannelCreate, InstagramChannelCreate, ChannelInstagramUpdate, ChannelUpdate, Template, TemplateMessage, \
-    CodeRequest
+    CodeRequest, CodeConfirm, CodeConfirmTwoFactor
 from pact_im.schema.messages import MessageResponse, MessageRequest
 from pact_im.services.base import Service
 
@@ -123,7 +123,8 @@ class ChannelsService(Service):
                                        sync_messages_from=sync_messages_from, sync_comments=sync_comments)
         return self._create_channel(company_id, query)
 
-    def update_channel(self, company_id: int, channel_id: int, query: Optional[BaseModel] = None, **options) -> Optional[int]:
+    def update_channel(self, company_id: int, channel_id: int, query: Optional[BaseModel] = None, **options) -> \
+    Optional[int]:
         """
         This method updates existing channel in the company
         https://pact-im.github.io/api-doc/#update-channel
@@ -237,8 +238,17 @@ class ChannelsService(Service):
         )
         return response
 
-    def request_channel_code(self, company_id: int, channel_id: int, provider: Union[str, Provider], **parameters):
-        # TODO Check docs
+    def request_channel_code(self, company_id: int, channel_id: int, provider: Union[str, Provider],
+                             **parameters) -> PactResponse:
+        """
+        https://pact-im.github.io/api-doc/#request-code-instagram-only
+
+        :param company_id:
+        :param channel_id:
+        :param provider:
+        :param parameters:
+        :return:
+        """
         query = CodeRequest(
             provider=provider,
             challenge_variant=parameters.get('challenge_variant'),
@@ -251,14 +261,77 @@ class ChannelsService(Service):
         )
         return response
 
-    def request_instagram_code(self, company_id: int, channel_id: int, challenge_variant: int):
+    def request_instagram_code(self, company_id: int, channel_id: int, challenge_variant: int) -> PactResponse:
+        """
+        https://pact-im.github.io/api-doc/#request-code-instagram-only
+
+        :param company_id:
+        :param channel_id:
+        :param challenge_variant:
+        :return:
+        """
         return self.request_channel_code(company_id, channel_id, provider=Provider.Instagram,
                                          challenge_variant=challenge_variant)
 
-    def request_instagram_two_factor_code(self, company_id: int, channel_id: int):
+    def request_instagram_two_factor_code(self, company_id: int, channel_id: int) -> PactResponse:
+        """
+        https://pact-im.github.io/api-doc/#request-code-instagram-only
+
+        :param company_id:
+        :param channel_id:
+        :return:
+        """
         return self.request_channel_code(company_id, channel_id, provider=Provider.Instagram,
                                          challenge_type=ChallengeType.TWO_FACTOR)
 
-    def confirm_channel_code(self, company_id: int, channel_id: int):
-        # TODO Wrong docs ?
-        pass
+    def confirm_channel_code(self, company_id: int, channel_id: int, provider: Union[str, Provider],
+                             **parameters) -> PactResponse:
+        """
+        https://pact-im.github.io/api-doc/#confirm-code-instagram-only
+
+        :param company_id:
+        :param channel_id:
+        :param provider:
+        :param parameters:
+        :return:
+        """
+        query = parameters.pop('query')
+        if not query:
+            query = parameters
+            query.update(provider=provider)
+
+        response = self.request(
+            method=Method.POST,
+            endpoint=self._endpoint('%s/confirm', company_id, channel_id),
+            body=query
+        )
+
+        return response
+
+    def confirm_instagram_code(self, company_id: int, channel_id: int, confirmation_code: str) -> PactResponse:
+        """
+        https://pact-im.github.io/api-doc/#confirm-code-instagram-only
+
+        :param company_id:
+        :param channel_id:
+        :param confirmation_code:
+        :return:
+        """
+        query = CodeConfirm(provider=Provider.Instagram, confirmation_code=confirmation_code)
+        return self.confirm_channel_code(company_id, channel_id, provider=query.provider, query=query)
+
+    def confirm_instagram_two_factor_code(self, company_id: int, channel_id: int, confirmation_code: str,
+                                          confirmation_variant: int) -> PactResponse:
+        """
+        https://pact-im.github.io/api-doc/#confirm-code-instagram-only
+
+        :param company_id:
+        :param channel_id:
+        :param confirmation_code:
+        :param confirmation_variant:
+        :return:
+        """
+        query = CodeConfirmTwoFactor(provider=Provider.Instagram, confirmation_code=confirmation_code,
+                                     confirmation_type=ChallengeType.TWO_FACTOR,
+                                     confirmation_variant=confirmation_variant)
+        return self.confirm_channel_code(company_id, channel_id, provider=query.provider, query=query)

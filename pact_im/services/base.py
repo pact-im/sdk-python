@@ -29,7 +29,7 @@ class Service(ABC):
 
     def _endpoint(self, method_endpoint=None, *args) -> str:
         base_args = [
-            self.__client.DEFAULT_API_BASE.rstrip("/"),
+            self.__client.base_url.rstrip("/"),
             self.get_endpoint(),
             str(method_endpoint or '').lstrip("/")
         ]
@@ -39,9 +39,10 @@ class Service(ABC):
         return endpoint % args
 
     def request(self, method: str, endpoint: str, params: Optional[Union[dict, BaseModel]] = None,
-                body: Optional[Union[dict, BaseModel]] = None, headers: dict = None) -> PactResponse:
+                body: Optional[Union[dict, BaseModel]] = None, headers: dict = None, file: dict = None) -> PactResponse:
         """
 
+        :param file:
         :param method:
         :param endpoint:
         :param params:
@@ -60,6 +61,7 @@ class Service(ABC):
             endpoint,
             headers=headers,
             params=params,
-            body=body
+            body=body,
+            file=file
         )
-        return PactResponse.parse_raw(response.raw)
+        return PactResponse.parse_raw(response.content)

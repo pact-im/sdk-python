@@ -43,8 +43,6 @@ class WhatsAppChannelCreate(BaseChannelCreate):
     do_not_mark_as_read: Optional[bool]
 
 
-
-
 class AvitoChannelCreate(BaseChannelCreate):
     login: str
     password: str
@@ -75,3 +73,13 @@ class CodeRequest(BaseModel):
     provider: Union[str, Provider]
     challenge_variant: Optional[int]
     challenge_type: Optional[Union[str, ChallengeType]]
+
+
+class CodeConfirm(BaseModel):
+    provider: Union[str, Provider]
+    confirmation_code: str
+
+
+class CodeConfirmTwoFactor(CodeConfirm):
+    confirmation_type: ChallengeType
+    confirmation_variant: int = Field(gt=0)

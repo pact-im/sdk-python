@@ -20,7 +20,7 @@ class PactClientTest(unittest.TestCase):
             self.assertIsInstance(e, InvalidArgumentException)
 
     def test_client(self):
-        self.assertEqual(self.client.DEFAULT_API_BASE, BASE_API_ENDPOINT)
+        self.assertEqual(self.client.base_url, BASE_API_ENDPOINT)
         self.assertIsInstance(self.client, PactClientBase)
 
     def test_service_companies(self):

@@ -13,7 +13,7 @@ class MockResponse:
         self.json_data = json_data
 
     @property
-    def raw(self):
+    def content(self):
         return json.dumps(self.json_data).encode()
 
     def json(self):
@@ -259,6 +259,20 @@ def mocked_messages_service(_, method, url, **kwargs):
                 "message_id": None,
                 "details": None,
                 "created_at": 1510396057
+            }
+        }, 200)
+
+    return MockResponse({}, 404)
+
+
+def mocked_attachment_service(_, method, url, **kwargs):
+    endpoint = 'https://api.pact.im/p1/companies/%s/conversations/%s/messages/attachments/'
+
+    if method == Method.POST and url == endpoint % (54, 1):
+        return MockResponse({
+            "status": "ok",
+            "data": {
+                "external_id": 1
             }
         }, 200)
 

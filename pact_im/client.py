@@ -27,3 +27,7 @@ class PactClient(PactClientBase):
     @property
     def service_messages(self) -> services.ServiceMessagesService:
         return services.ServiceMessagesService(self)
+
+    @property
+    def attachment(self) -> services.AttachmentService:
+        return services.AttachmentService(self)
