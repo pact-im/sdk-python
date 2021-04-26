@@ -9,6 +9,13 @@ nav:
   - Getting started: getting-started.md
   - Using:
       - Companies: using/companies.md
+      - Channels: using/channels.md
+      - Conversations: using/conversations.md
+      - Messages: using/messages.md
+      - Jobs: using/jobs.md
+      - ServiceMessages: using/service_messages.md
+      - Attachment: using/attachment.md
+  - Enums: enums.md
 theme:
   name: readthedocs
   highlightjs: true
