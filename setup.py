@@ -15,7 +15,7 @@ setup(
     description='PactIM Python API',
     author='Pact LLC',
     packages=find_packages(),
-    requires=[
+    install_requires=[
         'requests',
         'pydantic',
     ],
