@@ -1,3 +1,2 @@
-from .client import PactClient
-__version__ = '0.1'
+from pact_im.client import PactClient
 
