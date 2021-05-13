@@ -1,9 +1,10 @@
 # Channels
 
-[Reference](/reference/channels/)
+[Reference](reference/channels/)
 
 
 ### Get channels
+
 ```python
 from pact_im import PactClient
 client = PactClient('SecretToken')
@@ -16,6 +17,7 @@ for channel in response.channels:
 ### Create new channel
 
 > You can connect only one channel per one company for each provider. Contact with support if you want to use more than one channel
+
 
 ```python
 import datetime
@@ -38,6 +40,7 @@ external_id_another = client.channels.create_channel_whatsapp(
 ### Update channel
 
 For instagram channel
+
 ```python
 from pact_im import PactClient
 client = PactClient('SecretToken')
@@ -50,7 +53,9 @@ external_id = client.channels.update_channel_instagram(
 )
 
 ```
+
 For facebook/vkontakte/vkontakte_direct/telegram/viber channels
+
 ```python
 from pact_im import PactClient
 client = PactClient('SecretToken')
@@ -65,6 +70,7 @@ external_id = client.channels.update_channel_token(
 ```
 
 ### Delete channel
+
 ```python
 from pact_im import PactClient
 client = PactClient('SecretToken')

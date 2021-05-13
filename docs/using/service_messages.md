@@ -1,3 +1,3 @@
 # Service Messages
 
-[Reference](/reference/service_messages/)
+[Reference](reference/service_messages/)

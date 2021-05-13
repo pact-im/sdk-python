@@ -1,3 +1,3 @@
 # Conversation
 
-[Reference](/reference/converstions/)
+[Reference](reference/converstions/)

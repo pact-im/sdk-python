@@ -1,6 +1,6 @@
 # Companies
 
-[Reference](/reference/companies/)
+[Reference](reference/companies/)
 
 ### Get companies
 

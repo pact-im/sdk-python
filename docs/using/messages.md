@@ -1,3 +1,3 @@
 # Messages
 
-[Reference](/reference/messages/)
+[Reference](reference/messages/)
