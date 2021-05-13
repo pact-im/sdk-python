@@ -1,7 +1,5 @@
 # Channels
 
-[Reference](reference/channels/)
-
 
 ### Get channels
 
@@ -21,6 +19,7 @@ for channel in response.channels:
 
 ```python
 import datetime
+
 from pact_im import PactClient
 from pact_im.schema import Provider
 

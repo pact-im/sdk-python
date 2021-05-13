@@ -1,3 +1,2 @@
 # Jobs
 
-[Reference](reference/jobs/)

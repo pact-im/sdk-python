@@ -1,7 +1,5 @@
 # Companies
 
-[Reference](reference/companies/)
-
 ### Get companies
 
 ```python
