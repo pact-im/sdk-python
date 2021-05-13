@@ -1,3 +1,3 @@
 # Service Messages
 
-##### WIP
+[Reference](/reference/service_messages/)

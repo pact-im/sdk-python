@@ -33,6 +33,14 @@ class PactResponse(BaseModel):
     def is_deleted(self) -> bool:
         return self.status == ResponseStatus.DELETED
 
+    def is_success(self) -> bool:
+        return any([
+            self.is_ok(),
+            self.is_deleted(),
+            self.is_created(),
+            self.is_updated()
+        ])
+
     def to_class(self, class_: Any) -> Any:
         if not issubclass(class_, BaseModel):
             raise TypeError('class_ must be subclass of BaseModel')

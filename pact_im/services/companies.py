@@ -11,8 +11,8 @@ class CompaniesService(Service):
 
     def get_companies(self, from_: int = None, per: int = None,
                       sort: Union[str, SortDirection] = None) -> CompaniesList:
-        """
-        This method return list of all user companies
+        """This method return list of all user companies
+
         :param from_: Next page token geted from last request. Not valid or empty token return first page
         :param per: Number of elements per page. Default: 50
         :param sort: Change sorting direction. Available values: asc, desc. Default: asc

@@ -15,8 +15,38 @@ nav:
       - Jobs: using/jobs.md
       - ServiceMessages: using/service_messages.md
       - Attachment: using/attachment.md
+  - Reference:
+      - Companies: reference/companies.md
+      - Channels: reference/channels.md
+      - Conversations: reference/conversations.md
+      - Messages: reference/messages.md
+      - Jobs: reference/jobs.md
+      - ServiceMessages: reference/service_messages.md
+      - Attachment: reference/attachment.md
   - Enums: enums.md
 theme:
-  name: readthedocs
-  highlightjs: true
-  include_homepage_in_sidebar: false
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+  palette:
+    primary: blue
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          rendering:
+            show_source: false
+          selection:
+            docstring_style: restructured-text
+      watch:
+        - pact_im
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+  - javascripts/config.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css

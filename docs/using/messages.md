@@ -1,3 +1,3 @@
 # Messages
 
-##### WIP
+[Reference](/reference/messages/)
