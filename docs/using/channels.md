@@ -82,3 +82,32 @@ response = client.channels.delete_channel(
 print(response.is_success())
 
 ```
+
+
+## Telegram Personal
+### Request code
+
+```python
+from pact_im import PactClient
+from pact_im.schema.channels import TelegramPersonalCodeResponse
+client = PactClient('SecretToken')
+
+response: TelegramPersonalCodeResponse = client.channels.request_telegram_personal_code(
+    company_id=1,
+    channel_id=2
+)
+
+print(response.status)
+```
+
+###### Example Response
+```json
+{
+  "code_length": 6,
+  "code_type": "app",
+  "expires_in": 60,
+  "next_type": "app",
+  "session_id": 1337,
+  "status": "ok"
+}
+```

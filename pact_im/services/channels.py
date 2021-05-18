@@ -8,7 +8,7 @@ from pact_im.schema.base import PhoneNumber, PactResponse
 
 from pact_im.schema.channels import ChannelListRequest, ChannelList, BaseChannelCreate, ChannelCreate, \
     WhatsAppChannelCreate, InstagramChannelCreate, ChannelInstagramUpdate, ChannelUpdate, Template, TemplateMessage, \
-    CodeRequest, CodeConfirm, CodeConfirmTwoFactor
+    CodeRequest, CodeConfirm, CodeConfirmTwoFactor, TelegramPersonalCodeResponse
 from pact_im.schema.messages import MessageResponse, MessageRequest
 from pact_im.services.base import Service
 
@@ -54,8 +54,8 @@ class ChannelsService(Service):
         return response.external_id
 
     def create_channel_unified(self, company_id: int, provider: Union[str, Provider], **options) -> Optional[int]:
-        """
-        Unified method that can create channel in company.
+        """Unified method that can create channel in company.
+
         https://pact-im.github.io/api-doc/#create-new-channel
 
         Note:
@@ -78,8 +78,8 @@ class ChannelsService(Service):
         return self._create_channel(company_id, query)
 
     def create_channel_by_token(self, company_id: int, provider: Union[str, Provider], token: str) -> Optional[int]:
-        """
-        This method create a new channel in the company using token.
+        """This method create a new channel in the company using token.
+
         https://pact-im.github.io/api-doc/#create-new-channel
 
         List of supported channels that can be created by token you can see in link above
@@ -94,8 +94,8 @@ class ChannelsService(Service):
 
     def create_channel_whatsapp(self, company_id: int, sync_messages_from: Optional[datetime.datetime] = None,
                                 do_not_mark_as_read: Optional[bool] = None) -> Optional[int]:
-        """
-        This method create a new channel for WhatsApp
+        """This method create a new channel for WhatsApp
+
         https://pact-im.github.io/api-doc/#create-new-channel
 
         :param company_id: Id of the company
@@ -110,8 +110,8 @@ class ChannelsService(Service):
     def create_channel_instagram(self, company_id: int, login: str, password: str,
                                  sync_messages_from: Optional[datetime.datetime] = None,
                                  sync_comments: Optional[bool] = None) -> Optional[int]:
-        """
-        This method create a new channel for Instagram
+        """ This method create a new channel for Instagram
+
         :param company_id: Id of the company
         :param login: Instagram login
         :param password: Instagram password
@@ -125,8 +125,8 @@ class ChannelsService(Service):
 
     def update_channel(self, company_id: int, channel_id: int, query: Optional[BaseModel] = None, **options) -> \
     Optional[int]:
-        """
-        This method updates existing channel in the company
+        """This method updates existing channel in the company
+
         https://pact-im.github.io/api-doc/#update-channel
 
         :param query:
@@ -146,8 +146,8 @@ class ChannelsService(Service):
         return response.external_id
 
     def update_channel_instagram(self, company_id: int, channel_id: int, login: str, password: str) -> Optional[int]:
-        """
-        This method updates instagramm channel
+        """This method updates instagramm channel
+
         https://pact-im.github.io/api-doc/#update-channel
 
         :param company_id: Id of the company
@@ -160,8 +160,8 @@ class ChannelsService(Service):
         return self.update_channel(company_id, channel_id, query=query)
 
     def update_channel_token(self, company_id: int, channel_id: int, token: str) -> Optional[int]:
-        """
-        This method updates channels that using tokens to auth
+        """This method updates channels that using tokens to auth
+
         https://pact-im.github.io/api-doc/#update-channel
 
         :param company_id: Id of the company
@@ -174,8 +174,8 @@ class ChannelsService(Service):
 
     def send_whatsapp_template_message(self, company_id: int, channel_id: int, phone: str, template_id: str,
                                        template_language: str, template_parameters: dict) -> MessageResponse:
-        """
-        Send first message to whatsapp (business)
+        """Send first message to whatsapp (business)
+
         https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp-business
 
         :param company_id: Id of the company
@@ -203,8 +203,8 @@ class ChannelsService(Service):
 
     def send_first_whatsapp_message(self, company_id: int, channel_id: int, phone: str,
                                     message: str) -> MessageResponse:
-        """
-        Send first message to whatsapp
+        """Send first message to whatsapp
+
         https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp
 
         :param company_id: Id of the company
@@ -335,3 +335,16 @@ class ChannelsService(Service):
                                      confirmation_type=ChallengeType.TWO_FACTOR,
                                      confirmation_variant=confirmation_variant)
         return self.confirm_channel_code(company_id, channel_id, provider=query.provider, query=query)
+
+    def request_telegram_personal_code(self, company_id: int, channel_id: int) -> TelegramPersonalCodeResponse:
+        """This endpoint request code for telegram personal
+
+        https://pact-im.github.io/api-doc/#request-code-telegram-personal
+
+        :param company_id: ID of the company
+        :param channel_id: ID of the channel
+        :rtype TelegramPersonalCodeResponse:
+        :return: TelegramPersonalCodeResponse
+        """
+        response = self.request_channel_code(company_id, channel_id, provider=Provider.TelegramPersonal)
+        return response.to_class(TelegramPersonalCodeResponse)

@@ -27,6 +27,7 @@ from pact_im.schema import Provider
 * `WhatsAppBusiness`
 * `Instagram`
 * `Telegram`
+* `TelegramPersonal`
 * `Viber`
 * `VK`
 * `Facebook`

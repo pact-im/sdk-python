@@ -9,8 +9,8 @@ from ..schema.base import PactResponse, SortDirection
 class CompaniesService(Service):
     ENDPOINT = 'companies'
 
-    def get_companies(self, from_: int = None, per: int = None,
-                      sort: Union[str, SortDirection] = None) -> CompaniesList:
+    def get_companies(self, from_: int = None, per: int = 50,
+                      sort: Union[str, SortDirection] = SortDirection.ASC) -> CompaniesList:
         """This method return list of all user companies
 
         :param from_: Next page token geted from last request. Not valid or empty token return first page
@@ -33,9 +33,7 @@ class CompaniesService(Service):
     def update_company(self, external_id: int, name: Optional[str] = None, phone: Optional[str] = None,
                        description: Optional[str] = None,
                        webhook_url: Optional[str] = None, hidden: Optional[bool] = None) -> Optional[int]:
-        """
-        This method updates specific company attributes
-
+        """This method updates specific company attributes
 
         If you want to receive webhooks make sure that webhook_url is present.
             Webhook url must be valid and response code on POST json-request
@@ -45,7 +43,7 @@ class CompaniesService(Service):
         :param phone: Official company phone number of contact person
         :param description: Company description
         :param webhook_url: Endpoint for webhooks
-        :param hidden: Hide/Show a company in the Pact web interface
+        :param hidden: Hide/Show a company in the Pact web ivnterface
         :return int:
         :raise exceptions.ApiCallException: Api call error
         """

@@ -4,7 +4,7 @@ from typing import Optional, List, Union
 from pydantic import BaseModel, AnyHttpUrl, Field, root_validator, Extra
 
 from pact_im.schema import Provider, ChallengeType
-from pact_im.schema.base import NextPage, ListRequest, PhoneNumber
+from pact_im.schema.base import NextPage, ListRequest, PhoneNumber, PactResponse
 
 
 class Channel(BaseModel):
@@ -83,3 +83,12 @@ class CodeConfirm(BaseModel):
 class CodeConfirmTwoFactor(CodeConfirm):
     confirmation_type: ChallengeType
     confirmation_variant: int = Field(gt=0)
+
+
+class TelegramPersonalCodeResponse(BaseModel):
+    code_length: int
+    code_type: str
+    expires_in: int
+    next_type: str
+    session_id: int
+    status: str

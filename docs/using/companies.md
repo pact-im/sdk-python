@@ -12,6 +12,7 @@ for company in companies_result.companies:
 ```
 
 ### Update company
+
 ```python
 from pact_im import PactClient
 client = PactClient('SecretToken')
@@ -24,6 +25,7 @@ updated_external_id = client.companies.update_company(
 ```
 
 ### Create new company
+>  If you want to receive webhooks make sure that webhook_url is present. Webhook url must be valid and response code on POST json-request {'source':'pact.im', 'operation':'test'} must be 200
 
 ```python
 from pact_im import PactClient

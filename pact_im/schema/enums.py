@@ -31,6 +31,7 @@ class Provider(BaseEnum):
     WhatsAppBusiness = 'whatsapp_business'
     Instagram = 'instagram'
     Telegram = 'telegram'
+    TelegramPersonal = 'telegram_personal'
     Viber = 'viber'
     VK = 'vk'
     Facebook = 'facebook'
