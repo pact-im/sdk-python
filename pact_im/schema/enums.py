@@ -39,3 +39,8 @@ class Provider(BaseEnum):
 
 class ChallengeType(BaseEnum):
     TWO_FACTOR = 'two_factor'
+
+
+class ConfirmationType(BaseEnum):
+    CODE = 'code'
+    PASSWORD = 'password'

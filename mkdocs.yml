@@ -13,17 +13,20 @@ nav:
       - Conversations: using/conversations.md
       - Messages: using/messages.md
       - Jobs: using/jobs.md
-      - ServiceMessages: using/service_messages.md
-      - Attachment: using/attachment.md
+      #- ServiceMessages: using/service_messages.md
+      #- Attachment: using/attachment.md
   - Reference:
       - Companies: reference/companies.md
       - Channels: reference/channels.md
       - Conversations: reference/conversations.md
       - Messages: reference/messages.md
       - Jobs: reference/jobs.md
-      - ServiceMessages: reference/service_messages.md
+      # - ServiceMessages: reference/service_messages.md
       - Attachment: reference/attachment.md
   - Enums: enums.md
+  - Errors: errors.md
+  - Terms and conditions: terms.md
+  - Legal: legal.md
 theme:
   name: material
   logo: assets/logo.svg

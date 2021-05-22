@@ -34,7 +34,7 @@ class MessagesService(Service):
         return response.to_class(MessageList)
 
     def send_message(self, company_id: int, conversation_id: int, message: Optional[str] = None,
-                     attachments: Optional[List[int]] = None):
+                     attachments: Optional[Union[List[int], int]] = None) -> MessageResponse:
         """
         Send message and/or attachments
         https://pact-im.github.io/api-doc/#send-message
@@ -45,6 +45,8 @@ class MessagesService(Service):
         :param attachments: attachments ids
         :return:
         """
+        if isinstance(attachments, int):
+            attachments = [attachments]
         query = MessageCreate(message=message, attachments_ids=attachments)
 
         response = self.request(

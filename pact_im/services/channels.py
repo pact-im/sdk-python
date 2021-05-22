@@ -3,12 +3,12 @@ from typing import Union, Optional
 
 from pydantic import BaseModel
 
-from pact_im.schema import Method, SortDirection, Provider, ChallengeType
-from pact_im.schema.base import PhoneNumber, PactResponse
+from pact_im.schema import Method, SortDirection, Provider, ChallengeType, ConfirmationType
+from pact_im.schema.base import PhoneNumber, PactResponse, PactResultResponse
 
 from pact_im.schema.channels import ChannelListRequest, ChannelList, BaseChannelCreate, ChannelCreate, \
     WhatsAppChannelCreate, InstagramChannelCreate, ChannelInstagramUpdate, ChannelUpdate, Template, TemplateMessage, \
-    CodeRequest, CodeConfirm, CodeConfirmTwoFactor, TelegramPersonalCodeResponse
+    CodeRequest, CodeConfirm, CodeConfirmTwoFactor, TelegramPersonalCodeResponse, TelegramPersonalConfirmationResponse
 from pact_im.schema.messages import MessageResponse, MessageRequest
 from pact_im.services.base import Service
 
@@ -16,8 +16,8 @@ from pact_im.services.base import Service
 class ChannelsService(Service):
     ENDPOINT = 'companies/%s/channels'
 
-    def get_channels(self, company_id: int, from_: int = None, per: int = None,
-                     sort: Union[str, SortDirection] = None) -> ChannelList:
+    def get_channels(self, company_id: int, from_: int = None, per: int = 50,
+                     sort: Union[str, SortDirection] = SortDirection.ASC) -> ChannelList:
         """
         This method returns all the company channels
         https://pact-im.github.io/api-doc/#get-all-channels
@@ -124,7 +124,7 @@ class ChannelsService(Service):
         return self._create_channel(company_id, query)
 
     def update_channel(self, company_id: int, channel_id: int, query: Optional[BaseModel] = None, **options) -> \
-    Optional[int]:
+            Optional[int]:
         """This method updates existing channel in the company
 
         https://pact-im.github.io/api-doc/#update-channel
@@ -239,7 +239,7 @@ class ChannelsService(Service):
         return response
 
     def request_channel_code(self, company_id: int, channel_id: int, provider: Union[str, Provider],
-                             **parameters) -> PactResponse:
+                             **parameters) -> dict:
         """
         https://pact-im.github.io/api-doc/#request-code-instagram-only
 
@@ -257,23 +257,25 @@ class ChannelsService(Service):
         response = self.request(
             method=Method.POST,
             endpoint=self._endpoint('%s/request_code', company_id, channel_id),
-            body=query
+            body=query,
+            json=True
         )
         return response
 
-    def request_instagram_code(self, company_id: int, channel_id: int, challenge_variant: int) -> PactResponse:
+    def request_instagram_code(self, company_id: int, channel_id: int, challenge_variant: int) -> dict:
         """
         https://pact-im.github.io/api-doc/#request-code-instagram-only
 
-        :param company_id:
-        :param channel_id:
+        :param company_id: ID of the company
+        :param channel_id: ID of the channel
         :param challenge_variant:
         :return:
         """
         return self.request_channel_code(company_id, channel_id, provider=Provider.Instagram,
                                          challenge_variant=challenge_variant)
 
-    def request_instagram_two_factor_code(self, company_id: int, channel_id: int) -> PactResponse:
+    def request_instagram_two_factor_code(self, company_id: int, channel_id: int, challenge_type: Union[
+        str, ChallengeType] = ChallengeType.TWO_FACTOR) -> dict:
         """
         https://pact-im.github.io/api-doc/#request-code-instagram-only
 
@@ -282,16 +284,16 @@ class ChannelsService(Service):
         :return:
         """
         return self.request_channel_code(company_id, channel_id, provider=Provider.Instagram,
-                                         challenge_type=ChallengeType.TWO_FACTOR)
+                                         challenge_type=challenge_type)
 
     def confirm_channel_code(self, company_id: int, channel_id: int, provider: Union[str, Provider],
-                             **parameters) -> PactResponse:
+                             **parameters) -> dict:
         """
         https://pact-im.github.io/api-doc/#confirm-code-instagram-only
 
-        :param company_id:
-        :param channel_id:
-        :param provider:
+        :param company_id: ID of the company
+        :param channel_id: ID of the channel
+        :param provider: Provider
         :param parameters:
         :return:
         """
@@ -303,12 +305,13 @@ class ChannelsService(Service):
         response = self.request(
             method=Method.POST,
             endpoint=self._endpoint('%s/confirm', company_id, channel_id),
-            body=query
+            body=query,
+            json=True
         )
 
         return response
 
-    def confirm_instagram_code(self, company_id: int, channel_id: int, confirmation_code: str) -> PactResponse:
+    def confirm_instagram_code(self, company_id: int, channel_id: int, confirmation_code: str) -> dict:
         """
         https://pact-im.github.io/api-doc/#confirm-code-instagram-only
 
@@ -321,7 +324,7 @@ class ChannelsService(Service):
         return self.confirm_channel_code(company_id, channel_id, provider=query.provider, query=query)
 
     def confirm_instagram_two_factor_code(self, company_id: int, channel_id: int, confirmation_code: str,
-                                          confirmation_variant: int) -> PactResponse:
+                                          confirmation_variant: int) -> dict:
         """
         https://pact-im.github.io/api-doc/#confirm-code-instagram-only
 
@@ -336,7 +339,7 @@ class ChannelsService(Service):
                                      confirmation_variant=confirmation_variant)
         return self.confirm_channel_code(company_id, channel_id, provider=query.provider, query=query)
 
-    def request_telegram_personal_code(self, company_id: int, channel_id: int) -> TelegramPersonalCodeResponse:
+    def request_telegram_personal_code(self, company_id: int, channel_id: int) -> dict:
         """This endpoint request code for telegram personal
 
         https://pact-im.github.io/api-doc/#request-code-telegram-personal
@@ -348,3 +351,18 @@ class ChannelsService(Service):
         """
         response = self.request_channel_code(company_id, channel_id, provider=Provider.TelegramPersonal)
         return response.to_class(TelegramPersonalCodeResponse)
+
+    def confirm_telegram_personal_code(self, company_id: int, channel_id: int,
+                                       code: Union[str, int],
+                                       confirmation_type: Union[
+                                           str, ConfirmationType]) -> dict:
+        """This endpoint confirm telegram personal channel with two types: code, password
+
+        :param confirmation_type:
+        :param company_id: ID of the company
+        :param channel_id: ID of the channel
+        :param code: Confirmation code
+        :return:
+        """
+        return self.confirm_channel_code(company_id, channel_id, provider=Provider.TelegramPersonal,
+                                         confirmation_type=confirmation_type, code=code)

@@ -34,3 +34,7 @@ from pact_im.schema import Provider
 
 ### ChallengeType
 * `TWO_FACTOR`
+
+### ConfirmationType
+* `CODE`
+* `PASSWORD`

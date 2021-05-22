@@ -1,5 +1,5 @@
 import re
-from enum import Enum
+
 from typing import Optional, Union, Any
 
 from pydantic import BaseModel, Field
@@ -45,6 +45,10 @@ class PactResponse(BaseModel):
         if not issubclass(class_, BaseModel):
             raise TypeError('class_ must be subclass of BaseModel')
         return class_.parse_obj(self.data)
+
+
+class PactResultResponse(BaseModel):
+    result: str
 
 
 class NextPage(BaseModel):

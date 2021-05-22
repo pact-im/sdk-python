@@ -4,7 +4,7 @@ from typing import Optional, List, Union
 from pydantic import BaseModel, AnyHttpUrl, Field, root_validator, Extra
 
 from pact_im.schema import Provider, ChallengeType
-from pact_im.schema.base import NextPage, ListRequest, PhoneNumber, PactResponse
+from pact_im.schema.base import NextPage, ListRequest, PhoneNumber, PactResponse, PactResultResponse
 
 
 class Channel(BaseModel):
@@ -92,3 +92,7 @@ class TelegramPersonalCodeResponse(BaseModel):
     next_type: str
     session_id: int
     status: str
+
+
+class TelegramPersonalConfirmationResponse(PactResultResponse):
+    state: str

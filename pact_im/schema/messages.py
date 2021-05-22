@@ -22,6 +22,10 @@ class MessageResponse(BaseModel):
     details: Optional[Any]
     created_at: datetime.datetime
 
+    @property
+    def is_delivered(self) -> bool:
+        return self.state == 'delivered'
+
 
 class MessageRequest(BaseModel):
     phone: str

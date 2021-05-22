@@ -11,9 +11,9 @@ class JobsService(Service):
         This method return info about message delivery job
         https://pact-im.github.io/api-doc/?shell#message-delivery-jobs
 
-        :param company_id:
-        :param channel_id:
-        :param job_id:
+        :param company_id: ID of the company
+        :param channel_id: iD of the channel
+        :param job_id: Job ID
         :return:
         """
         response = self.request(

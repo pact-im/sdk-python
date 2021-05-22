@@ -11,6 +11,13 @@ class AttachmentService(Service):
     ENDPOINT = 'companies/%s/conversations/%s/messages/attachments'
 
     def attach_local_file(self, company_id: int, conversation_id: int, file: Union[str, IO]) -> Optional[int]:
+        """
+
+        :param company_id: ID of the company
+        :param conversation_id: ID of the conversation
+        :param file: File Path or IO
+        :return: Attachment External Id
+        """
         if isinstance(file, str):
             if os.path.isfile(file):
                 file_io = open(file, 'rb')
@@ -28,6 +35,13 @@ class AttachmentService(Service):
         return response.external_id
 
     def attach_remote_file(self, company_id: int, conversation_id: int, url: str) -> Optional[int]:
+        """
+
+        :param company_id: ID of the company
+        :param conversation_id: ID of the conversation
+        :param url: File Url
+        :return: Attachment External Id
+        """
         response = self.request(
             method=Method.POST,
             endpoint=self._endpoint(None, company_id, conversation_id),
@@ -35,16 +49,16 @@ class AttachmentService(Service):
         )
         return response.external_id
 
-    def upload_file(self, company_id: int, conversation_id: int, *, url: str = None, file: Union[str, IO] = None):
+    def upload_file(self, company_id: int, conversation_id: int, *, url: str = None, file: Union[str, IO] = None) -> Optional[int]:
         """
         Сreates an attachment which can be sent in message
         https://pact-im.github.io/api-doc/#upload-attachments
 
-        :param company_id:
-        :param conversation_id:
-        :param url:
-        :param file:
-        :return:
+        :param company_id: ID of the company
+        :param conversation_id: ID of the conversation
+        :param url: File url
+        :param file: Path to file or IO
+        :return: Attachment External Id
         """
         assert url or file, 'must be set url or file'
 

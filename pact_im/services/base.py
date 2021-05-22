@@ -39,7 +39,8 @@ class Service(ABC):
         return endpoint % args
 
     def request(self, method: str, endpoint: str, params: Optional[Union[dict, BaseModel]] = None,
-                body: Optional[Union[dict, BaseModel]] = None, headers: dict = None, file: dict = None) -> PactResponse:
+                body: Optional[Union[dict, BaseModel]] = None, headers: dict = None, file: dict = None, *,
+                json: bool = False) -> Union[dict, list, PactResponse]:
         """
 
         :param file:
@@ -64,4 +65,6 @@ class Service(ABC):
             body=body,
             file=file
         )
+        if json:
+            return response.json()
         return PactResponse.parse_raw(response.content)

@@ -89,15 +89,14 @@ print(response.is_success())
 
 ```python
 from pact_im import PactClient
-from pact_im.schema.channels import TelegramPersonalCodeResponse
 client = PactClient('SecretToken')
 
-response: TelegramPersonalCodeResponse = client.channels.request_telegram_personal_code(
+response: dict = client.channels.request_telegram_personal_code(
     company_id=1,
     channel_id=2
 )
 
-print(response.status)
+print(response)
 ```
 
 ###### Example Response
@@ -110,4 +109,150 @@ print(response.status)
   "session_id": 1337,
   "status": "ok"
 }
+```
+
+### Confirm Code
+```python
+from pact_im import PactClient
+from pact_im.schema import ConfirmationType
+
+client = PactClient('SecretToken')
+
+response: dict = client.channels.confirm_telegram_personal_code(
+    company_id=1,
+    channel_id=1,
+    code='some_code',
+    confirmation_type=ConfirmationType.CODE
+)
+
+print(response)
+```
+###### Example Response
+```json
+{
+  "result": "ok",
+  "state": "enabled"
+}
+```
+
+## Instagram
+### Request code
+```python
+from pact_im import PactClient
+client = PactClient('SecretToken')
+
+response: dict = client.channels.request_instagram_code(
+    company_id=1,
+    channel_id=2,
+    challenge_variant=0
+)
+
+print(response)
+```
+###### Example Response
+```json
+{
+  "result": "ok"
+}
+```
+
+### Request two factor SMS authentication code
+```python
+from pact_im import PactClient
+client = PactClient('SecretToken')
+
+response: dict = client.channels.request_instagram_two_factor_code(
+    company_id=1,
+    channel_id=2
+)
+
+print(response)
+```
+###### Example Response
+```json
+{
+  "result": "ok"
+}
+```
+
+### Confirm code
+```python
+from pact_im import PactClient
+client = PactClient('SecretToken')
+
+response: dict = client.channels.confirm_instagram_code(
+    company_id=1,
+    channel_id=2,
+    confirmation_code='some_code'
+)
+
+print(response)
+```
+###### Example Response
+```json
+{
+  "result": "ok"
+}
+```
+
+### Confirm two factor authentication code
+```python
+from pact_im import PactClient
+client = PactClient('SecretToken')
+
+response: dict = client.channels.confirm_instagram_two_factor_code(
+    company_id=1,
+    channel_id=2,
+    confirmation_code='some_code',
+    confirmation_variant=1
+)
+
+print(response)
+```
+###### Example Response
+```json
+{
+  "result": "ok"
+}
+```
+
+## How to write first message to Whatsapp
+>  Whatsapp requires using this method to write the first message.
+
+```python
+from pact_im import PactClient
+from pact_im.schema.messages import MessageResponse
+client = PactClient('SecretToken')
+
+response: MessageResponse = client.channels.send_first_whatsapp_message(
+    company_id=1,
+    channel_id=2,
+    phone='79999999999',
+    message='Some text message'
+)
+
+print(response)
+```
+
+## How to write first message to Whatsapp Business
+This endpoint provides an ability to create conversation with a client in whatsapp channel. When you execute this request we will add a job for delivery. We will send webhook when the operation is complete or failed.
+
+You can also poll delivery status here: [Jobs](../jobs)
+
+> Whatsapp business requires using this method to write the first message.
+
+```python
+from pact_im import PactClient
+from pact_im.schema.messages import MessageResponse
+client = PactClient('SecretToken')
+
+response: MessageResponse = client.channels.send_whatsapp_template_message(
+    company_id=1,
+    channel_id=2,
+    phone='79999999999',
+    template_id=111,
+    template_language='ru'
+)
+
+print(response)
 ```
