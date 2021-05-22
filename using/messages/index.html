@@ -301,9 +301,46 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Messages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Messages
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-conversation-messages" class="md-nav__link">
+    Get conversation messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-message" class="md-nav__link">
+    Send message
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -316,30 +353,6 @@
     <li class="md-nav__item">
       <a href="../jobs/" class="md-nav__link">
         Jobs
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../attachment/" class="md-nav__link">
-        Attachment
       </a>
     </li>
   
@@ -440,18 +453,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/attachment/" class="md-nav__link">
         Attachment
       </a>
@@ -480,6 +481,51 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -499,6 +545,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-conversation-messages" class="md-nav__link">
+    Get conversation messages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-message" class="md-nav__link">
+    Send message
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -511,6 +579,43 @@
                 
                 
                 <h1 id="messages">Messages</h1>
+<p>Each message belongs to conversation. Message fields:</p>
+<ul>
+<li>id (Integer)</li>
+<li>channel_type (String) – whatsapp, instagram, etc..</li>
+<li>message (String) – message body</li>
+<li>income (Boolean) – whether message is income or outcome</li>
+</ul>
+<h3 id="get-conversation-messages">Get conversation messages</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">messages_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">get_messages</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages_response</span><span class="o">.</span><span class="n">messages</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">external_id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="send-message">Send message</h3>
+<p>This endpoint delivers message to the client under specified conversation.</p>
+<p>There are two delivery modes: <em>synchronous</em> and <em>asyncronous</em>. If <code>message_id</code> field in response is null or empty – it means asyncronous delivery.</p>
+<p>You’ll receive a webhook with the delivery status if delivery is async.</p>
+<p>You can check operation result manually here: <a href="../jobs">Jobs</a></p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+<span class="kn">from</span> <span class="nn">pact_im.schema.messages</span> <span class="kn">import</span> <span class="n">MessageResponse</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">message_response</span><span class="p">:</span> <span class="n">MessageResponse</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">message_response</span><span class="o">.</span><span class="n">message_id</span><span class="p">)</span>
+</code></pre></div>
+<strong>Important</strong>: Some messengers support only text or only attachment in one message. For example, whatsapp allows to attach a caption for an image but not allows to attach a caption to a PDF document. Multiple attachments are allowed only for vkontakte</p>
                 
               
               

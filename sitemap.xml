@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://pact-im.github.io/sdk-python/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/getting-started/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/using/companies/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/using/channels/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/using/conversations/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/using/messages/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/using/jobs/</loc>
-     <lastmod>2021-05-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://pact-im.github.io/sdk-python/using/service_messages/</loc>
-     <lastmod>2021-05-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://pact-im.github.io/sdk-python/using/attachment/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/reference/companies/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/reference/channels/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/reference/conversations/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/reference/messages/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/reference/jobs/</loc>
-     <lastmod>2021-05-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://pact-im.github.io/sdk-python/reference/service_messages/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/reference/attachment/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://pact-im.github.io/sdk-python/enums/</loc>
-     <lastmod>2021-05-13</lastmod>
+     <lastmod>2021-05-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://pact-im.github.io/sdk-python/errors/</loc>
+     <lastmod>2021-05-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://pact-im.github.io/sdk-python/terms/</loc>
+     <lastmod>2021-05-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://pact-im.github.io/sdk-python/legal/</loc>
+     <lastmod>2021-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

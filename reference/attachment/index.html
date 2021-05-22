@@ -309,30 +309,6 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/attachment/" class="md-nav__link">
-        Attachment
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
     </li>
@@ -428,18 +404,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -482,6 +446,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pact_im.services.attachment.AttachmentService.attach_local_file" class="md-nav__link">
+    attach_local_file()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pact_im.services.attachment.AttachmentService.attach_remote_file" class="md-nav__link">
+    attach_remote_file()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pact_im.services.attachment.AttachmentService.upload_file" class="md-nav__link">
     upload_file()
   </a>
@@ -517,6 +495,51 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -545,6 +568,20 @@
         <li class="md-nav__item">
   <a href="#pact_im.services.attachment.AttachmentService" class="md-nav__link">
     pact_im.services.attachment.AttachmentService
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pact_im.services.attachment.AttachmentService.attach_local_file" class="md-nav__link">
+    attach_local_file()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pact_im.services.attachment.AttachmentService.attach_remote_file" class="md-nav__link">
+    attach_remote_file()
   </a>
   
 </li>
@@ -592,6 +629,136 @@
 
 
 
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="pact_im.services.attachment.AttachmentService.attach_local_file">
+<code class="highlight language-python"><span class="n">attach_local_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>company_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the company</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>conversation_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the conversation</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>file</code></td>
+        <td><code>Union[str, IO]</code></td>
+        <td><p>File Path or IO</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Optional[int]</code></td>
+      <td><p>Attachment External Id</p></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="pact_im.services.attachment.AttachmentService.attach_remote_file">
+<code class="highlight language-python"><span class="n">attach_remote_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">conversation_id</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>company_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the company</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>conversation_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the conversation</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>File Url</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Optional[int]</code></td>
+      <td><p>Attachment External Id</p></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+
 
 
   <div class="doc doc-object doc-method">
@@ -623,25 +790,25 @@ https://pact-im.github.io/api-doc/#upload-attachments</p>
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>conversation_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the conversation</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>url</code></td>
         <td><code>str</code></td>
-        <td></td>
+        <td><p>File url</p></td>
         <td><code>None</code></td>
       </tr>
       <tr>
         <td><code>file</code></td>
         <td><code>Union[str, IO]</code></td>
-        <td></td>
+        <td><p>Path to file or IO</p></td>
         <td><code>None</code></td>
       </tr>
   </tbody>
@@ -656,8 +823,8 @@ https://pact-im.github.io/api-doc/#upload-attachments</p>
   </thead>
   <tbody>
     <tr>
-      <td><code></code></td>
-      <td></td>
+      <td><code>Optional[int]</code></td>
+      <td><p>Attachment External Id</p></td>
     </tr>
   </tbody>
 </table>
@@ -692,7 +859,7 @@ https://pact-im.github.io/api-doc/#upload-attachments</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../service_messages/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../jobs/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -701,7 +868,7 @@ https://pact-im.github.io/api-doc/#upload-attachments</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              ServiceMessages
+              Jobs
             </div>
           </div>
         </a>

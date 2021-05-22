@@ -365,30 +365,6 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../attachment/" class="md-nav__link">
-        Attachment
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
     </li>
@@ -484,18 +460,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/attachment/" class="md-nav__link">
         Attachment
       </a>
@@ -519,6 +483,51 @@
     <li class="md-nav__item">
       <a href="../../enums/" class="md-nav__link">
         Enums
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
       </a>
     </li>
   
@@ -603,6 +612,9 @@
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="create-new-company">Create new company</h3>
+<blockquote>
+<p>If you want to receive webhooks make sure that webhook_url is present. Webhook url must be valid and response code on POST json-request {'source':'pact.im', 'operation':'test'} must be 200</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
 

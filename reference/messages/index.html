@@ -309,30 +309,6 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/attachment/" class="md-nav__link">
-        Attachment
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
     </li>
@@ -484,18 +460,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../attachment/" class="md-nav__link">
         Attachment
       </a>
@@ -519,6 +483,51 @@
     <li class="md-nav__item">
       <a href="../../enums/" class="md-nav__link">
         Enums
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
       </a>
     </li>
   
@@ -731,7 +740,7 @@ https://pact-im.github.io/api-doc/#send-message</p>
       </tr>
       <tr>
         <td><code>attachments</code></td>
-        <td><code>Optional[List[int]]</code></td>
+        <td><code>Union[List[int], int]</code></td>
         <td><p>attachments ids</p></td>
         <td><code>None</code></td>
       </tr>
@@ -747,7 +756,7 @@ https://pact-im.github.io/api-doc/#send-message</p>
   </thead>
   <tbody>
     <tr>
-      <td><code></code></td>
+      <td><code>MessageResponse</code></td>
       <td></td>
     </tr>
   </tbody>

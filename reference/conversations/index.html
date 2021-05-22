@@ -309,30 +309,6 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/attachment/" class="md-nav__link">
-        Attachment
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
     </li>
@@ -498,18 +474,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../attachment/" class="md-nav__link">
         Attachment
       </a>
@@ -533,6 +497,51 @@
     <li class="md-nav__item">
       <a href="../../enums/" class="md-nav__link">
         Enums
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
       </a>
     </li>
   
@@ -664,19 +673,19 @@ https://pact-im.github.io/api-doc/#create-new-conversation</p>
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>phone</code></td>
         <td><code>str</code></td>
-        <td></td>
+        <td><p>Phone</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>provider</code></td>
         <td><code>Union[str, pact_im.schema.enums.Provider]</code></td>
-        <td></td>
+        <td><p>Provider</p></td>
         <td><code>&lt;Provider.WhatsApp: &#39;whatsapp&#39;&gt;</code></td>
       </tr>
   </tbody>
@@ -696,21 +705,6 @@ https://pact-im.github.io/api-doc/#create-new-conversation</p>
     </tr>
   </tbody>
 </table>
-<p><strong>Exceptions:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td><code>ValidationError</code></td>
-        <td><p>pydantic.error_wrappers.ValidationError</p></td>
-      </tr>
-  </tbody>
-</table>
     </div>
 
   </div>
@@ -722,7 +716,7 @@ https://pact-im.github.io/api-doc/#create-new-conversation</p>
 
 
 <h2 class="doc doc-heading" id="pact_im.services.conversations.ConversationsService.get_conversations">
-<code class="highlight language-python"><span class="n">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">per</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">get_conversations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">per</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sort</span><span class="o">=&lt;</span><span class="n">SortDirection</span><span class="o">.</span><span class="n">ASC</span><span class="p">:</span> <span class="s1">&#39;asc&#39;</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 </h2>
@@ -746,26 +740,26 @@ https://pact-im.github.io/api-doc/#get-all-conversations</p>
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>from_</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>Next page token geted from last request. Not valid or empty token return first page</p></td>
         <td><code>None</code></td>
       </tr>
       <tr>
         <td><code>per</code></td>
         <td><code>int</code></td>
-        <td></td>
-        <td><code>None</code></td>
+        <td><p>Number of elements per page. Default: 50</p></td>
+        <td><code>50</code></td>
       </tr>
       <tr>
         <td><code>sort</code></td>
         <td><code>Union[str, pact_im.schema.enums.SortDirection]</code></td>
-        <td></td>
-        <td><code>None</code></td>
+        <td><p>We sort results by id. Change sorting direction. Avilable values: asc, desc</p></td>
+        <td><code>&lt;SortDirection.ASC: &#39;asc&#39;&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -819,13 +813,13 @@ https://pact-im.github.io/api-doc/#get-conversation-details</p>
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>conversation_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the conversation</p></td>
         <td><em>required</em></td>
       </tr>
   </tbody>
@@ -841,7 +835,7 @@ https://pact-im.github.io/api-doc/#get-conversation-details</p>
   <tbody>
     <tr>
       <td><code>ConversationResponse</code></td>
-      <td></td>
+      <td><p>Conversation Detail</p></td>
     </tr>
   </tbody>
 </table>
@@ -881,19 +875,19 @@ https://pact-im.github.io/api-doc/#update-assignee-for-conversation</p>
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>conversation_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the conversation</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>assignee_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>User id</p></td>
         <td><em>required</em></td>
       </tr>
   </tbody>
@@ -909,7 +903,7 @@ https://pact-im.github.io/api-doc/#update-assignee-for-conversation</p>
   <tbody>
     <tr>
       <td><code>Optional[int]</code></td>
-      <td></td>
+      <td><p>Conversation External ID</p></td>
     </tr>
   </tbody>
 </table>

@@ -289,9 +289,93 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Conversations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Conversations
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-all-conversations" class="md-nav__link">
+    Get All Conversations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-new-conversation" class="md-nav__link">
+    Create new conversation
+  </a>
+  
+    <nav class="md-nav" aria-label="Create new conversation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-response" class="md-nav__link">
+    Example Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-conversation-details" class="md-nav__link">
+    Get conversation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Get conversation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-response_1" class="md-nav__link">
+    Example Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-assignee-for-conversation" class="md-nav__link">
+    Update assignee for conversation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-attachment-for-message" class="md-nav__link">
+    Upload attachment for message
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -316,30 +400,6 @@
     <li class="md-nav__item">
       <a href="../jobs/" class="md-nav__link">
         Jobs
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../attachment/" class="md-nav__link">
-        Attachment
       </a>
     </li>
   
@@ -440,18 +500,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/attachment/" class="md-nav__link">
         Attachment
       </a>
@@ -480,6 +528,51 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -499,6 +592,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-all-conversations" class="md-nav__link">
+    Get All Conversations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-new-conversation" class="md-nav__link">
+    Create new conversation
+  </a>
+  
+    <nav class="md-nav" aria-label="Create new conversation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-response" class="md-nav__link">
+    Example Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-conversation-details" class="md-nav__link">
+    Get conversation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Get conversation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-response_1" class="md-nav__link">
+    Example Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-assignee-for-conversation" class="md-nav__link">
+    Update assignee for conversation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-attachment-for-message" class="md-nav__link">
+    Upload attachment for message
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -511,6 +673,132 @@
                 
                 
                 <h1 id="conversation">Conversation</h1>
+<h3 id="get-all-conversations">Get All Conversations</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">conversations_result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">conversations</span><span class="o">.</span><span class="n">get_conversations</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">per</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">conversation</span> <span class="ow">in</span> <span class="n">conversations_result</span><span class="o">.</span><span class="n">conversations</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">conversation</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="create-new-conversation">Create new conversation</h3>
+<p>This endpoint creates conversation in the company using whatsapp channel.</p>
+<blockquote>
+<p>If you have a <code>whatsapp_business</code> provider, use a different method to create conversation using a template</p>
+</blockquote>
+<p><a href="../channels#how-to-write-first-message-to-whatsapp-business">Create first message for whatsapp business provider</a>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+<span class="kn">from</span> <span class="nn">pact_im.schema</span> <span class="kn">import</span> <span class="n">Provider</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">conversations</span><span class="o">.</span><span class="n">create_conversation</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">provider</span><span class="o">=</span><span class="n">Provider</span><span class="o">.</span><span class="n">WhatsApp</span><span class="p">,</span>
+    <span class="n">phone</span><span class="o">=</span><span class="s1">&#39;79250000001&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">conversation</span><span class="o">.</span><span class="n">external_id</span><span class="p">)</span>
+</code></pre></div></p>
+<h5 id="example-response">Example Response</h5>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;data&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;conversation&quot;</span><span class="p">:{</span>
+         <span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+         <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;79250000001&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;channel_id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+         <span class="nt">&quot;channel_type&quot;</span><span class="p">:</span><span class="s2">&quot;whatsapp&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="s2">&quot;2017-11-11T10:17:10.655Z&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;created_at_timestamp&quot;</span><span class="p">:</span><span class="mi">1603119600</span><span class="p">,</span>
+         <span class="nt">&quot;avatar&quot;</span><span class="p">:</span><span class="s2">&quot;/avatars/original/missing.png&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;sender_external_id&quot;</span><span class="p">:</span><span class="s2">&quot;79250000001&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;meta&quot;</span><span class="p">:{</span>
+
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="get-conversation-details">Get conversation details</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">conversations</span><span class="o">.</span><span class="n">get_detail</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">conversation</span><span class="o">.</span><span class="n">external_id</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="example-response_1">Example Response</h5>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;data&quot;</span><span class="p">:{</span>
+      <span class="nt">&quot;conversation&quot;</span><span class="p">:{</span>
+         <span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+         <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;79250000001&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;channel_id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+         <span class="nt">&quot;channel_type&quot;</span><span class="p">:</span><span class="s2">&quot;whatsapp&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="s2">&quot;2017-11-11T10:17:10.655Z&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;created_at_timestamp&quot;</span><span class="p">:</span><span class="mi">1603119600</span><span class="p">,</span>
+         <span class="nt">&quot;avatar&quot;</span><span class="p">:</span><span class="s2">&quot;/avatars/original/missing.png&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;sender_external_id&quot;</span><span class="p">:</span><span class="s2">&quot;79250000001&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;meta&quot;</span><span class="p">:{</span>
+
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="update-assignee-for-conversation">Update assignee for conversation</h3>
+<p>Update assignee for conversation</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">conversation_external_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">conversations</span><span class="o">.</span><span class="n">update_assignee</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">assignee_id</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">conversation_external_id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="upload-attachment-for-message">Upload attachment for message</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">pact_im</span> <span class="kn">import</span> <span class="n">PactClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">PactClient</span><span class="p">(</span><span class="s1">&#39;SecretToken&#39;</span><span class="p">)</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;tmp&#39;</span><span class="p">,</span> <span class="s1">&#39;image.png&#39;</span><span class="p">)</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Altai_Republic#/media/File:Katun.jpg&#39;</span>
+
+<span class="c1"># Local File</span>
+<span class="n">response_attach_external_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">attachment</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">file</span><span class="o">=</span><span class="n">file_path</span>
+<span class="p">)</span>
+
+<span class="c1"># File url</span>
+<span class="n">another_attach_external_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">attachment</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="n">file_url</span>
+<span class="p">)</span>
+<span class="n">messages</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
+    <span class="n">company_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">conversation_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Some text&#39;</span><span class="p">,</span>
+    <span class="n">attachments</span><span class="o">=</span><span class="n">response_attach_external_id</span>
+    <span class="c1"># or list(response_attach_external_id, another_attach_external_id)</span>
+<span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Whatsapp requires using this method with existing whatsapp business template</p>
+</blockquote>
                 
               
               

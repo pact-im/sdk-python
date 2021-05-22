@@ -309,30 +309,6 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../using/attachment/" class="md-nav__link">
-        Attachment
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
     </li>
@@ -443,6 +419,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pact_im.services.channels.ChannelsService.confirm_telegram_personal_code" class="md-nav__link">
+    confirm_telegram_personal_code()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pact_im.services.channels.ChannelsService.create_channel_by_token" class="md-nav__link">
     create_channel_by_token()
   </a>
@@ -501,6 +484,13 @@
         <li class="md-nav__item">
   <a href="#pact_im.services.channels.ChannelsService.request_instagram_two_factor_code" class="md-nav__link">
     request_instagram_two_factor_code()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pact_im.services.channels.ChannelsService.request_telegram_personal_code" class="md-nav__link">
+    request_telegram_personal_code()
   </a>
   
 </li>
@@ -589,18 +579,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../service_messages/" class="md-nav__link">
-        ServiceMessages
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../attachment/" class="md-nav__link">
         Attachment
       </a>
@@ -624,6 +602,51 @@
     <li class="md-nav__item">
       <a href="../../enums/" class="md-nav__link">
         Enums
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../terms/" class="md-nav__link">
+        Terms and conditions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        Legal
       </a>
     </li>
   
@@ -678,6 +701,13 @@
         <li class="md-nav__item">
   <a href="#pact_im.services.channels.ChannelsService.confirm_instagram_two_factor_code" class="md-nav__link">
     confirm_instagram_two_factor_code()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pact_im.services.channels.ChannelsService.confirm_telegram_personal_code" class="md-nav__link">
+    confirm_telegram_personal_code()
   </a>
   
 </li>
@@ -741,6 +771,13 @@
         <li class="md-nav__item">
   <a href="#pact_im.services.channels.ChannelsService.request_instagram_two_factor_code" class="md-nav__link">
     request_instagram_two_factor_code()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pact_im.services.channels.ChannelsService.request_telegram_personal_code" class="md-nav__link">
+    request_telegram_personal_code()
   </a>
   
 </li>
@@ -844,19 +881,19 @@
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>channel_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the channel</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>provider</code></td>
         <td><code>Union[str, pact_im.schema.enums.Provider]</code></td>
-        <td></td>
+        <td><p>Provider</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -877,7 +914,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>PactResponse</code></td>
+      <td><code>dict</code></td>
       <td></td>
     </tr>
   </tbody>
@@ -943,7 +980,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>PactResponse</code></td>
+      <td><code>dict</code></td>
       <td></td>
     </tr>
   </tbody>
@@ -1015,7 +1052,79 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>PactResponse</code></td>
+      <td><code>dict</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="pact_im.services.channels.ChannelsService.confirm_telegram_personal_code">
+<code class="highlight language-python"><span class="n">confirm_telegram_personal_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">confirmation_type</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This endpoint confirm telegram personal channel with two types: code, password</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>confirmation_type</code></td>
+        <td><code>Union[str, pact_im.schema.enums.ConfirmationType]</code></td>
+        <td></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>company_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the company</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>channel_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the channel</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>code</code></td>
+        <td><code>Union[str, int]</code></td>
+        <td><p>Confirmation code</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
       <td></td>
     </tr>
   </tbody>
@@ -1038,8 +1147,8 @@
 
     <div class="doc doc-contents ">
 
-      <p>This method create a new channel in the company using token.
-https://pact-im.github.io/api-doc/#create-new-channel</p>
+      <p>This method create a new channel in the company using token.</p>
+<p>https://pact-im.github.io/api-doc/#create-new-channel</p>
 <p>List of supported channels that can be created by token you can see in link above</p>
 
 <p><strong>Parameters:</strong></p>
@@ -1184,8 +1293,8 @@ https://pact-im.github.io/api-doc/#create-new-channel</p>
 
     <div class="doc doc-contents ">
 
-      <p>Unified method that can create channel in company.
-https://pact-im.github.io/api-doc/#create-new-channel</p>
+      <p>Unified method that can create channel in company.</p>
+<p>https://pact-im.github.io/api-doc/#create-new-channel</p>
 <p>Note:
     You can connect only one channel per one company for each provider.
     Contact with support if you want to use more than one channel</p>
@@ -1290,8 +1399,8 @@ https://pact-im.github.io/api-doc/#create-new-channel</p>
 
     <div class="doc doc-contents ">
 
-      <p>This method create a new channel for WhatsApp
-https://pact-im.github.io/api-doc/#create-new-channel</p>
+      <p>This method create a new channel for WhatsApp</p>
+<p>https://pact-im.github.io/api-doc/#create-new-channel</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1411,7 +1520,7 @@ https://pact-im.github.io/api-doc/#delete-channel</p>
 
 
 <h2 class="doc doc-heading" id="pact_im.services.channels.ChannelsService.get_channels">
-<code class="highlight language-python"><span class="n">get_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">per</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">get_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">per</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sort</span><span class="o">=&lt;</span><span class="n">SortDirection</span><span class="o">.</span><span class="n">ASC</span><span class="p">:</span> <span class="s1">&#39;asc&#39;</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 </h2>
@@ -1448,13 +1557,13 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
         <td><code>per</code></td>
         <td><code>int</code></td>
         <td><p>Number of elements per page. Default: 50</p></td>
-        <td><code>None</code></td>
+        <td><code>50</code></td>
       </tr>
       <tr>
         <td><code>sort</code></td>
         <td><code>Union[str, pact_im.schema.enums.SortDirection]</code></td>
         <td><p>Change sorting direction (sorting by id). Avilable values: asc, desc. Default: asc.</p></td>
-        <td><code>None</code></td>
+        <td><code>&lt;SortDirection.ASC: &#39;asc&#39;&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -1540,7 +1649,7 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>PactResponse</code></td>
+      <td><code>dict</code></td>
       <td></td>
     </tr>
   </tbody>
@@ -1579,13 +1688,13 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
       <tr>
         <td><code>company_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the company</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>channel_id</code></td>
         <td><code>int</code></td>
-        <td></td>
+        <td><p>ID of the channel</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -1606,7 +1715,7 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>PactResponse</code></td>
+      <td><code>dict</code></td>
       <td></td>
     </tr>
   </tbody>
@@ -1622,7 +1731,7 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
 
 
 <h2 class="doc doc-heading" id="pact_im.services.channels.ChannelsService.request_instagram_two_factor_code">
-<code class="highlight language-python"><span class="n">request_instagram_two_factor_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">channel_id</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">request_instagram_two_factor_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">challenge_type</span><span class="o">=&lt;</span><span class="n">ChallengeType</span><span class="o">.</span><span class="n">TWO_FACTOR</span><span class="p">:</span> <span class="s1">&#39;two_factor&#39;</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 </h2>
@@ -1666,8 +1775,69 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>PactResponse</code></td>
+      <td><code>dict</code></td>
       <td></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="pact_im.services.channels.ChannelsService.request_telegram_personal_code">
+<code class="highlight language-python"><span class="n">request_telegram_personal_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">company_id</span><span class="p">,</span> <span class="n">channel_id</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This endpoint request code for telegram personal</p>
+<p>https://pact-im.github.io/api-doc/#request-code-telegram-personal</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>company_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the company</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>channel_id</code></td>
+        <td><code>int</code></td>
+        <td><p>ID of the channel</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>dict</code></td>
+      <td><p>TelegramPersonalCodeResponse</p></td>
     </tr>
   </tbody>
 </table>
@@ -1689,8 +1859,8 @@ https://pact-im.github.io/api-doc/#get-all-channels</p>
 
     <div class="doc doc-contents ">
 
-      <p>Send first message to whatsapp
-https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp</p>
+      <p>Send first message to whatsapp</p>
+<p>https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1762,8 +1932,8 @@ https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp</p>
 
     <div class="doc doc-contents ">
 
-      <p>Send first message to whatsapp (business)
-https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp-business</p>
+      <p>Send first message to whatsapp (business)</p>
+<p>https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp-business</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1847,8 +2017,8 @@ https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp-busine
 
     <div class="doc doc-contents ">
 
-      <p>This method updates existing channel in the company
-https://pact-im.github.io/api-doc/#update-channel</p>
+      <p>This method updates existing channel in the company</p>
+<p>https://pact-im.github.io/api-doc/#update-channel</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1920,8 +2090,8 @@ https://pact-im.github.io/api-doc/#update-channel</p>
 
     <div class="doc doc-contents ">
 
-      <p>This method updates instagramm channel
-https://pact-im.github.io/api-doc/#update-channel</p>
+      <p>This method updates instagramm channel</p>
+<p>https://pact-im.github.io/api-doc/#update-channel</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1993,8 +2163,8 @@ https://pact-im.github.io/api-doc/#update-channel</p>
 
     <div class="doc doc-contents ">
 
-      <p>This method updates channels that using tokens to auth
-https://pact-im.github.io/api-doc/#update-channel</p>
+      <p>This method updates channels that using tokens to auth</p>
+<p>https://pact-im.github.io/api-doc/#update-channel</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
